@@ -58,9 +58,17 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
     setGroupNotesState(updatedGroupNotes)
   }
 
+  // Note adding handler.
   const newNote = (groupIndex: number) => {
     const updatedGroupNotes = [...groupNotesState]
     updatedGroupNotes[groupIndex].value.push('Type a name...')
+    setGroupNotesState(updatedGroupNotes)
+  }
+
+  // Group adding handler.
+  const newGroup = () => {
+    const updatedGroupNotes = [...groupNotesState]
+    updatedGroupNotes.push({ name: 'New Group', value: [] })
     setGroupNotesState(updatedGroupNotes)
   }
 
@@ -90,7 +98,12 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
             ))}
           </BoardGroup>
         ))}
-        <div className="table__add-new-group header-txt-1 bold-txt">+</div>
+        <div
+          className="table__add-new-group header-txt-1 bold-txt"
+          onClick={newGroup}
+        >
+          + Add Group
+        </div>
       </div>
     </div>
   )
