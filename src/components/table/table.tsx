@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react'
+import { Note } from '../note/note'
 
-type groupNoteType = {
+export type GroupNoteType = {
   name: string
   value: Array<string>
 }
 
 type TableProps = {
-  groupNotes: Array<groupNoteType>
+  groupNotes: Array<GroupNoteType>
 }
 export const Table: React.FC<TableProps> = ({ groupNotes }) => {
   const [groupNotesState, setGroupNotesState] =
-    useState<Array<groupNoteType>>(groupNotes)
+    useState<Array<GroupNoteType>>(groupNotes)
   const dragStartIndex = useRef({ groupIndex: 0, noteIndex: 0 })
   const dragEndIndex = useRef({ groupIndex: 0, noteIndex: 0 })
 
@@ -56,16 +57,18 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
         <div className="group-header header-txt-1 bold-txt" key={groupIndex}>
           {group.name}
           {group.value.map((note, noteIndex) => (
-            <div
-              className="draggable-items body-txt-2"
-              draggable
-              onDragStart={() => draggingStartHandler(groupIndex, noteIndex)}
-              onDragEnter={() => draggedOverHandler(groupIndex, noteIndex)}
-              onDragEnd={dragEnd}
-              key={noteIndex}
-            >
-              {note}
-            </div>
+            <Note
+              draggingStartHandler={() =>
+                draggingStartHandler(groupIndex, noteIndex)
+              }
+              draggedOverHandler={() =>
+                draggedOverHandler(groupIndex, noteIndex)
+              }
+              dragEnd={() => dragEnd()}
+              groupIndex={groupIndex}
+              noteIndex={noteIndex}
+              note={note}
+            />
           ))}
         </div>
       ))}

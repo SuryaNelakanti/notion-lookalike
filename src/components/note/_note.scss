@@ -1,0 +1,14 @@
+.note{
+    width: 260px;
+    height: 35px;
+    border: 1px solid $gray-600;
+    padding: .8rem 1rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.note:hover{
+    background-color: $gray-200;
+    cursor: grab;
+}
