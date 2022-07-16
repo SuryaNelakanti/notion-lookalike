@@ -1,0 +1,22 @@
+.modal-outer{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background: rgba(0, 0, 0, 0.6);
+}
+.modal-inner{
+    position: fixed;
+    width: 60vw;
+    height: 70vh;
+    background: white;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 4px;
+}
+.modal-hide{
+    display: none;
+}
