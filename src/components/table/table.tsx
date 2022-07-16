@@ -72,6 +72,13 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
     setGroupNotesState(updatedGroupNotes)
   }
 
+  // Group deleting handler.
+  const deleteGroup = (groupIndex: number) => {
+    const updatedGroupNotes = [...groupNotesState]
+    updatedGroupNotes.splice(groupIndex, 1)
+    setGroupNotesState(updatedGroupNotes)
+  }
+
   return (
     <div>
       <div className="header header-txt-1 bold-txt">Task Board ☎️</div>
@@ -81,6 +88,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
             group={group}
             groupIndex={groupIndex}
             newNote={() => newNote(groupIndex)}
+            deleteGroup={() => deleteGroup(groupIndex)}
           >
             {group.value.map((note, noteIndex) => (
               <Note

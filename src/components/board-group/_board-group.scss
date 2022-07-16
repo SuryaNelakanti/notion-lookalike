@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 200px;
+    width: 260px;
     gap: 1rem;
     &__add-note{
         color: $gray-300;
@@ -13,5 +13,18 @@
     &__add-note:hover{
         background-color: $gray-200;
         border-radius: 4px;
+    }
+    &__heading{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        width: 260px;
+        &-options{
+            color: $gray-200;
+        }
+        &-options:hover{
+            color: black;
+            cursor: pointer;
+        }
     }
 }
