@@ -1,5 +1,5 @@
 import React from 'react'
-import { GroupNoteType } from '../table/table'
+import { GroupNoteType } from '../../helpers'
 
 type BoardGroupProps = {
   group: GroupNoteType

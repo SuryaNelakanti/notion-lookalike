@@ -1,21 +1,21 @@
 import React, { useState, useRef } from 'react'
+import { GroupNoteType } from '../../helpers'
 import { BoardGroup } from '../board-group/board-group'
 import { Note } from '../note/note'
-
-export type GroupNoteType = {
-  name: string
-  value: Array<string>
-}
 
 type TableProps = {
   groupNotes: Array<GroupNoteType>
 }
 export const Table: React.FC<TableProps> = ({ groupNotes }) => {
+  // States.
   const [groupNotesState, setGroupNotesState] =
     useState<Array<GroupNoteType>>(groupNotes)
+
+  // Refs.
   const dragStartIndex = useRef({ groupIndex: 0, noteIndex: 0 })
   const dragEndIndex = useRef({ groupIndex: 0, noteIndex: 0 })
 
+  // Handlers.
   const draggingStartHandler = (groupIndex: number, noteIndex: number) => {
     dragStartIndex.current.groupIndex = groupIndex
     dragStartIndex.current.noteIndex = noteIndex
@@ -64,7 +64,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
               draggedOverHandler={() =>
                 draggedOverHandler(groupIndex, noteIndex)
               }
-              dragEnd={() => dragEnd()}
+              dragEnd={dragEnd}
               groupIndex={groupIndex}
               noteIndex={noteIndex}
               note={note}
