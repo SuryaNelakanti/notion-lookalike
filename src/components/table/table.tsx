@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { BoardGroup } from '../board-group/board-group'
 import { Note } from '../note/note'
 
 export type GroupNoteType = {
@@ -54,8 +55,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
   return (
     <div className="table">
       {groupNotesState.map((group, groupIndex) => (
-        <div className="group-header header-txt-1 bold-txt" key={groupIndex}>
-          {group.name}
+        <BoardGroup group={group} groupIndex={groupIndex}>
           {group.value.map((note, noteIndex) => (
             <Note
               draggingStartHandler={() =>
@@ -70,7 +70,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
               note={note}
             />
           ))}
-        </div>
+        </BoardGroup>
       ))}
     </div>
   )

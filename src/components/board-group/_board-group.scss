@@ -1,0 +1,17 @@
+.group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    gap: 1rem;
+    &__add-note{
+        color: $gray-300;
+        width: 260px;
+        height: 35px;
+        padding: .8rem 1rem 1rem;
+    }
+    &__add-note:hover{
+        background-color: $gray-200;
+        border-radius: 4px;
+    }
+}
