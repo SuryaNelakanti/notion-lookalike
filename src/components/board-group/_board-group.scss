@@ -18,23 +18,23 @@
         display: flex;
         flex-direction: row;
         justify-content:space-between;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         &-edit{
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 20rem;
+            width: 24rem;
         }
         &-options{
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 6rem;
+            width: 2rem;
             font-size: 4rem;
             color: $gray-200;
         }
         &-options:hover{
-            color: black;
+            color: red;
             cursor: pointer;
         }
     }

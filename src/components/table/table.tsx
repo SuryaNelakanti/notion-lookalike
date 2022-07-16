@@ -26,9 +26,11 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
     dragStartIndex.current.noteIndex = noteIndex
   }
 
-  const draggedOverHandler = (groupIndex: number, noteIndex: number) => {
+  const draggedOverHandler = (groupIndex: number, noteIndex?: number) => {
     dragEndIndex.current.groupIndex = groupIndex
-    dragEndIndex.current.noteIndex = noteIndex
+    if (noteIndex) {
+      dragEndIndex.current.noteIndex = noteIndex
+    }
   }
 
   const dragEnd = () => {
@@ -119,6 +121,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
             deleteGroup={() => deleteGroup(groupIndex)}
             editGroup={(groupName) => editGroup(groupIndex, groupName)}
             key={groupIndex}
+            onGroupDragOver={(groupIndex) => draggedOverHandler(groupIndex)}
           >
             {group.value.map((note, noteIndex) => (
               <Note

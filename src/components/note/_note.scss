@@ -7,13 +7,13 @@
     align-items: flex-start;
 }
 
-.group__heading-edit{
+.note__heading-edit{
     width: 260px;
     height: 35px;
     padding: .8rem 1rem 1rem;
 
 }
-.group__heading-edit:hover{
+.note__heading-edit:hover{
     background-color: $gray-200;
     cursor: pointer;
 }

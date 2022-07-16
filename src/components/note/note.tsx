@@ -41,7 +41,7 @@ export const Note: React.FC<NoteProps> = ({
         onClick={showModalHandler}
       >
         <input
-          className="group__heading-edit no-input-styling body-txt-3"
+          className="note__heading-edit no-input-styling body-txt-3"
           value={note.title}
           autoFocus
           onChange={(editedNote) => editNoteHandler(editedNote.target.value)}

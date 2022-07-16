@@ -8,6 +8,7 @@ type BoardGroupProps = {
   newNote: () => void
   editGroup: (newGroupName: string) => void
   deleteGroup: () => void
+  onGroupDragOver: (groupIndex: number) => void
 }
 
 export const BoardGroup: React.FC<BoardGroupProps> = ({
@@ -17,9 +18,14 @@ export const BoardGroup: React.FC<BoardGroupProps> = ({
   newNote,
   editGroup,
   deleteGroup,
+  onGroupDragOver,
 }) => {
   return (
-    <div className="group" key={groupIndex}>
+    <div
+      className="group"
+      key={groupIndex}
+      onDragOver={() => onGroupDragOver(groupIndex)}
+    >
       <div className="group__heading">
         <input
           className="group__heading-edit no-input-styling header-txt-1 bold-txt"
