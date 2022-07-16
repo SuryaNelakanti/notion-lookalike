@@ -29,3 +29,11 @@
 .note-expanded-view{
     padding: 8rem;
 }
+.note-header, .note-summary{
+    width: 100%;
+}
+.note-summary{
+    height: 40rem;
+    resize: none;
+
+}

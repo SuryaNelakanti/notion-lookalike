@@ -60,7 +60,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
   // Note adding handler.
   const newNote = (groupIndex: number) => {
     const updatedGroupNotes = [...groupNotesState]
-    updatedGroupNotes[groupIndex].value.push('Type something...')
+    updatedGroupNotes[groupIndex].value.push({ title: 'Type something...' })
     setGroupNotesState(updatedGroupNotes)
   }
 
@@ -71,7 +71,18 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
     noteTitle: string
   ) => {
     const updatedGroupNotes = [...groupNotesState]
-    updatedGroupNotes[groupIndex].value[noteIndex] = noteTitle
+    updatedGroupNotes[groupIndex].value[noteIndex].title = noteTitle
+    setGroupNotesState(updatedGroupNotes)
+  }
+
+  // Note summary editing handler.
+  const editSummmaryHandler = (
+    groupIndex: number,
+    noteIndex: number,
+    editedSummary: string
+  ) => {
+    const updatedGroupNotes = [...groupNotesState]
+    updatedGroupNotes[groupIndex].value[noteIndex].summary = editedSummary
     setGroupNotesState(updatedGroupNotes)
   }
 
@@ -107,6 +118,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
             newNote={() => newNote(groupIndex)}
             deleteGroup={() => deleteGroup(groupIndex)}
             editGroup={(groupName) => editGroup(groupIndex, groupName)}
+            key={groupIndex}
           >
             {group.value.map((note, noteIndex) => (
               <Note
@@ -122,6 +134,10 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
                 note={note}
                 editNoteHandler={(noteTitle) =>
                   editNoteTitle(groupIndex, noteIndex, noteTitle)
+                }
+                key={noteIndex}
+                editSummaryhandler={(editedSummary) =>
+                  editSummmaryHandler(groupIndex, noteIndex, editedSummary)
                 }
               />
             ))}

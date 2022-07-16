@@ -1,14 +1,23 @@
+export type NoteType = {
+  title: string
+  summary?: string
+}
 export type GroupNoteType = {
   name: string
-  value: Array<string>
+  value: Array<NoteType>
 }
 
 // Initial data.
 export const initialGrouping = [
-  { name: 'Todo', value: [] },
-  { name: 'In Progress', value: [] },
-  { name: 'Done', value: [] },
+  { name: 'Todo', value: [{ title: 'Untitled', summary: '' }] },
+  {
+    name: 'In Progress',
+    value: [{ title: 'Untitled', summary: '' }],
+  },
+  { name: 'Done', value: [{ title: 'Untitled', summary: '' }] },
 ]
+
+export const initialSummary = [{ noteIndex: '1', value: [] }]
 
 // Local storage helper function.
 export const GroupedNotesMetaManager = {
