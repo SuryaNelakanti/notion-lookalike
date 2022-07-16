@@ -1,6 +1,23 @@
+.header{
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10rem
+}
 .table{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 10rem;
+    &__add-new-group{
+        color: $gray-200;
+    }
+    &__add-new-group:hover{
+        color: black;
+        cursor: pointer;
+    }
 }
+

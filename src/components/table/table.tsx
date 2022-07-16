@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react'
-import { GroupNoteType } from '../../helpers'
+import React, { useState, useRef, useEffect } from 'react'
+import { GroupedNotesMetaManager, GroupNoteType } from '../../helpers'
 import { BoardGroup } from '../board-group/board-group'
 import { Note } from '../note/note'
 
@@ -14,6 +14,12 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
   // Refs.
   const dragStartIndex = useRef({ groupIndex: 0, noteIndex: 0 })
   const dragEndIndex = useRef({ groupIndex: 0, noteIndex: 0 })
+
+  // Effects.
+  useEffect(() => {
+    GroupedNotesMetaManager.saveNotes(groupNotesState)
+    console.log('hi')
+  }, [groupNotesState])
 
   // Handlers.
   const draggingStartHandler = (groupIndex: number, noteIndex: number) => {
@@ -52,26 +58,40 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
     setGroupNotesState(updatedGroupNotes)
   }
 
+  const newNote = (groupIndex: number) => {
+    const updatedGroupNotes = [...groupNotesState]
+    updatedGroupNotes[groupIndex].value.push('Type a name...')
+    setGroupNotesState(updatedGroupNotes)
+  }
+
   return (
-    <div className="table">
-      {groupNotesState.map((group, groupIndex) => (
-        <BoardGroup group={group} groupIndex={groupIndex}>
-          {group.value.map((note, noteIndex) => (
-            <Note
-              draggingStartHandler={() =>
-                draggingStartHandler(groupIndex, noteIndex)
-              }
-              draggedOverHandler={() =>
-                draggedOverHandler(groupIndex, noteIndex)
-              }
-              dragEnd={dragEnd}
-              groupIndex={groupIndex}
-              noteIndex={noteIndex}
-              note={note}
-            />
-          ))}
-        </BoardGroup>
-      ))}
+    <div>
+      <div className="header header-txt-1 bold-txt">Task Board ☎️</div>
+      <div className="table">
+        {groupNotesState.map((group, groupIndex) => (
+          <BoardGroup
+            group={group}
+            groupIndex={groupIndex}
+            newNote={() => newNote(groupIndex)}
+          >
+            {group.value.map((note, noteIndex) => (
+              <Note
+                draggingStartHandler={() =>
+                  draggingStartHandler(groupIndex, noteIndex)
+                }
+                draggedOverHandler={() =>
+                  draggedOverHandler(groupIndex, noteIndex)
+                }
+                dragEnd={dragEnd}
+                groupIndex={groupIndex}
+                noteIndex={noteIndex}
+                note={note}
+              />
+            ))}
+          </BoardGroup>
+        ))}
+        <div className="table__add-new-group header-txt-1 bold-txt">+</div>
+      </div>
     </div>
   )
 }
