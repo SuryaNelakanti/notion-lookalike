@@ -121,7 +121,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
             deleteGroup={() => deleteGroup(groupIndex)}
             editGroup={(groupName) => editGroup(groupIndex, groupName)}
             key={groupIndex}
-            onGroupDragOver={(groupIndex) => draggedOverHandler(groupIndex)}
+            onGroupDragOver={() => draggedOverHandler(groupIndex)}
           >
             {group.value.map((note, noteIndex) => (
               <Note
