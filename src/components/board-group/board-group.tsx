@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GroupNoteType } from '../../helpers'
 
 type BoardGroupProps = {
   group: GroupNoteType
   groupIndex: number
   children: any
-  newNote: (groupIndex: number) => void
-  deleteGroup: (groupIndex: number) => void
+  newNote: () => void
+  editGroup: (newGroupName: string) => void
+  deleteGroup: () => void
 }
 
 export const BoardGroup: React.FC<BoardGroupProps> = ({
@@ -14,20 +15,38 @@ export const BoardGroup: React.FC<BoardGroupProps> = ({
   groupIndex,
   children,
   newNote,
+  editGroup,
   deleteGroup,
 }) => {
+  // States.
+  const [groupName, setGroupName] = useState(group.name)
+
+  //Handlers.
   const newNoteHandler = () => {
-    newNote(groupIndex)
+    newNote()
   }
 
   const deleteGroupHandler = () => {
-    deleteGroup(groupIndex)
+    deleteGroup()
   }
 
+  const editGroupHandler = async (editedName: string) => {
+    setGroupName(editedName)
+  }
+
+  // Input value is in a useEffect to prevent last character not being captured.
+  useEffect(() => {
+    editGroup(groupName)
+  }, [groupName])
+
   return (
-    <div className="group header-txt-1 bold-txt" key={groupIndex}>
+    <div className="group" key={groupIndex}>
       <div className="group__heading">
-        <>{group.name}</>
+        <input
+          className="group__heading-edit no-input-styling header-txt-1 bold-txt"
+          value={groupName}
+          onChange={(editedName) => editGroupHandler(editedName.target.value)}
+        />
         <div className="group__heading-options" onClick={deleteGroupHandler}>
           -
         </div>

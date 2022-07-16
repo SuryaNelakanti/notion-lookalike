@@ -18,7 +18,6 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
   // Effects.
   useEffect(() => {
     GroupedNotesMetaManager.saveNotes(groupNotesState)
-    console.log('hi')
   }, [groupNotesState])
 
   // Handlers.
@@ -72,6 +71,13 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
     setGroupNotesState(updatedGroupNotes)
   }
 
+  // Group editing handler.
+  const editGroup = (groupIndex: number, groupName: string) => {
+    const updatedGroupNotes = [...groupNotesState]
+    updatedGroupNotes[groupIndex].name = groupName
+    setGroupNotesState(updatedGroupNotes)
+  }
+
   // Group deleting handler.
   const deleteGroup = (groupIndex: number) => {
     const updatedGroupNotes = [...groupNotesState]
@@ -89,6 +95,7 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
             groupIndex={groupIndex}
             newNote={() => newNote(groupIndex)}
             deleteGroup={() => deleteGroup(groupIndex)}
+            editGroup={(groupName) => editGroup(groupIndex, groupName)}
           >
             {group.value.map((note, noteIndex) => (
               <Note
