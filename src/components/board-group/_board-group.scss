@@ -13,27 +13,28 @@
     &__add-note:hover{
         background-color: $gray-200;
         border-radius: 4px;
+        cursor: pointer;
     }
     &__heading{
         display: flex;
         flex-direction: row;
-        justify-content:space-between;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         &-edit{
-            width: 24rem;
+            justify-content:space-between;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 22rem;
         }
         &-options{
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
-            width: 2rem;
-            font-size: 4rem;
-            color: $gray-200;
+            width: 5rem;
+            font-size: 2rem;
+
         }
-        &-options:hover{
+        &-options-delete:hover{
             color: red;
             cursor: pointer;
         }

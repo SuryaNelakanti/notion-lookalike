@@ -33,7 +33,8 @@ export const BoardGroup: React.FC<BoardGroupProps> = ({
           onChange={(editedName) => editGroup(editedName.target.value)}
         />
         <div className="group__heading-options" onClick={deleteGroup}>
-          -
+          {group.value.length}
+          <div className="group__heading-options-delete">🗑️</div>
         </div>
       </div>
       {children}
