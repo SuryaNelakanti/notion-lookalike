@@ -1,12 +1,11 @@
 .note{
     width: 260px;
     height: 35px;
-    border: 1px solid $gray-600;
+    box-shadow: 0 0 1px 1px $gray-200;
     padding: .8rem 1rem 1rem;
-    border-radius: 8px;
+    border-radius: 4px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
 }
 .note:hover{
     background-color: $gray-200;
