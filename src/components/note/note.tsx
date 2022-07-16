@@ -1,4 +1,4 @@
-import React, { RefObject, useState } from 'react'
+import React, { useState } from 'react'
 import { NoteModal } from '../note-modal/note-modal'
 
 type NoteProps = {
