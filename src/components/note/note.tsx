@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NoteType } from '../../helpers'
-import { NoteModal } from '../note-modal/note-modal'
+import { NoteModal } from '../note-modal/note-modal.js'
 
 type NoteProps = {
   draggingStartHandler: (groupIndex: number, noteIndex: number) => void

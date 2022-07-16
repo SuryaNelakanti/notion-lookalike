@@ -1,6 +1,6 @@
 import React from 'react'
 import './assets/scss/main.scss'
-import { Table } from './components/table/table'
+import { Table } from './components/table/table.js'
 import { GroupedNotesMetaManager, initialGrouping } from './helpers'
 
 export const App = () => {

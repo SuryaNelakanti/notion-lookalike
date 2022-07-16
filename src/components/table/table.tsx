@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { GroupedNotesMetaManager, GroupNoteType } from '../../helpers'
-import { BoardGroup } from '../board-group/board-group'
-import { Note } from '../note/note'
+import { BoardGroup } from '../board-group/board-group.js'
+import { Note } from '../note/note.js'
 
 type TableProps = {
   groupNotes: Array<GroupNoteType>
