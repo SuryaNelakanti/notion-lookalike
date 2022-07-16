@@ -18,41 +18,20 @@ export const BoardGroup: React.FC<BoardGroupProps> = ({
   editGroup,
   deleteGroup,
 }) => {
-  // States.
-  const [groupName, setGroupName] = useState(group.name)
-
-  //Handlers.
-  const newNoteHandler = () => {
-    newNote()
-  }
-
-  const deleteGroupHandler = () => {
-    deleteGroup()
-  }
-
-  const editGroupHandler = async (editedName: string) => {
-    setGroupName(editedName)
-  }
-
-  // Input value is in a useEffect to prevent last character not being captured.
-  useEffect(() => {
-    editGroup(groupName)
-  }, [groupName])
-
   return (
     <div className="group" key={groupIndex}>
       <div className="group__heading">
         <input
           className="group__heading-edit no-input-styling header-txt-1 bold-txt"
-          value={groupName}
-          onChange={(editedName) => editGroupHandler(editedName.target.value)}
+          value={group.name}
+          onChange={(editedName) => editGroup(editedName.target.value)}
         />
-        <div className="group__heading-options" onClick={deleteGroupHandler}>
+        <div className="group__heading-options" onClick={deleteGroup}>
           -
         </div>
       </div>
       {children}
-      <div className="group__add-note body-txt-4" onClick={newNoteHandler}>
+      <div className="group__add-note body-txt-4" onClick={newNote}>
         + new note
       </div>
     </div>

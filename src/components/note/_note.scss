@@ -2,12 +2,18 @@
     width: 260px;
     height: 35px;
     box-shadow: 0 0 1px 1px $gray-200;
-    padding: .8rem 1rem 1rem;
     border-radius: 4px;
     display: flex;
     align-items: flex-start;
 }
-.note:hover{
+
+.group__heading-edit{
+    width: 260px;
+    height: 35px;
+    padding: .8rem 1rem 1rem;
+
+}
+.group__heading-edit:hover{
     background-color: $gray-200;
-    cursor: grab;
+    cursor: pointer;
 }

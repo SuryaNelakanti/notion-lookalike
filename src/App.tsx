@@ -4,8 +4,10 @@ import { Table } from './components/table/table'
 import { GroupedNotesMetaManager, initialGrouping } from './helpers'
 
 export const App = () => {
+  // Fetching notes from localStorage.
   const groupNotesString = GroupedNotesMetaManager.getNotes()
 
+  // If notes do not exist in local storage, use inital values instead.
   const groupNotes = !!groupNotesString
     ? JSON.parse(groupNotesString)
     : initialGrouping

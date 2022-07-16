@@ -60,7 +60,18 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
   // Note adding handler.
   const newNote = (groupIndex: number) => {
     const updatedGroupNotes = [...groupNotesState]
-    updatedGroupNotes[groupIndex].value.push('Type a name...')
+    updatedGroupNotes[groupIndex].value.push('Type something...')
+    setGroupNotesState(updatedGroupNotes)
+  }
+
+  // Note title editing handler.
+  const editNoteTitle = (
+    groupIndex: number,
+    noteIndex: number,
+    noteTitle: string
+  ) => {
+    const updatedGroupNotes = [...groupNotesState]
+    updatedGroupNotes[groupIndex].value[noteIndex] = noteTitle
     setGroupNotesState(updatedGroupNotes)
   }
 
@@ -109,6 +120,9 @@ export const Table: React.FC<TableProps> = ({ groupNotes }) => {
                 groupIndex={groupIndex}
                 noteIndex={noteIndex}
                 note={note}
+                editNoteHandler={(noteTitle) =>
+                  editNoteTitle(groupIndex, noteIndex, noteTitle)
+                }
               />
             ))}
           </BoardGroup>

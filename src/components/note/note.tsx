@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { RefObject, useState } from 'react'
 import { NoteModal } from '../note-modal/note-modal'
 
 type NoteProps = {
@@ -8,6 +8,7 @@ type NoteProps = {
   groupIndex: number
   noteIndex: number
   note: string
+  editNoteHandler: (noteTitle: string) => void
 }
 export const Note: React.FC<NoteProps> = ({
   draggingStartHandler,
@@ -16,6 +17,7 @@ export const Note: React.FC<NoteProps> = ({
   groupIndex,
   noteIndex,
   note,
+  editNoteHandler,
 }) => {
   // States.
   const [showModal, setShowModal] = useState(false)
@@ -35,9 +37,21 @@ export const Note: React.FC<NoteProps> = ({
         key={noteIndex}
         onClick={showModalHandler}
       >
-        {note}
+        <input
+          className="group__heading-edit no-input-styling body-txt-3"
+          value={note}
+          autoFocus
+          onChange={(editedNote) => editNoteHandler(editedNote.target.value)}
+        />
       </div>
-      {showModal && <NoteModal show onClose={hideModalHandler} />}
+      {showModal && (
+        <NoteModal
+          show
+          noteTitle={note}
+          noteSummary={note}
+          onClose={hideModalHandler}
+        />
+      )}
     </>
   )
 }
