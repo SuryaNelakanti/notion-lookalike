@@ -1,7 +1,7 @@
 # notion-lookalike
 
 A Kanban Board with visuals very similar to Notion.
-Made using React + ScSS + Vite,
+Made using React (w/ TypeScript) + ScSS + Vite,
 
 The application stores all entries in localStorage, so no requirement of a constant internet connection.
 
