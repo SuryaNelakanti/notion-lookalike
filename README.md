@@ -4,6 +4,7 @@ A Kanban Board with visuals very similar to Notion.
 Made using React (w/ TypeScript) + ScSS + Vite,
 
 The application stores all entries in localStorage, so no requirement of a constant internet connection.
+Built drag and drop functionality without using any external libraries.
 
 It is hosted [here](https://62d309000422273c71aa83d0--amazing-peony-cde31c.netlify.app/)
 
